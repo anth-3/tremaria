@@ -370,7 +370,7 @@ ACMD(do_page) {
 
 	if (IS_NPC(ch)) {
 		send_to_char(ch, "Non-player characters cannot page.. go away.\r\n");
-	} else if (!*arg){
+	} else if (!*arg) {
 		send_to_char(ch, "Whom do you wish to page?\r\n");
 	} else {
 		char buf[MAX_STRING_LENGTH];
@@ -394,9 +394,9 @@ ACMD(do_page) {
 				send_to_char(ch, "%s", CONFIG_OK);
 			} else {
 				act(buf, FALSE, ch, 0, vict, TO_CHAR);
-			} else {
-				send_to_char(ch, "There is no such person in the game!\r\n");
 			}
+		} else {
+			send_to_char(ch, "There is no such person in the game!\r\n");
 		}
 	}
 }
