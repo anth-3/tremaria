@@ -1,7 +1,9 @@
 /***************************************************************************************************
-* File: act.h                                                       Part of the Realms of Tremaria *
+*                                                                   Part of the Realms of Tremaria *
+* File: act.h                                                                   A CircleMUD/tbaMUD *
 * Description: Header file for the core act* c files.                                              *
-* @todo Utility functions that could easily be moved elsewhere have been marked. Suggest a review  *
+*                                                                                                  *
+* TODO: Utility functions that could easily be moved elsewhere have been marked. Suggest a review  *
 * of all utility functions (aka. non ACMDs) and determine if the utility functions should be       *
 * placed into a lower level (non-ACMD focused) shared module.                                      *
 *                                                                                                  *
@@ -9,7 +11,7 @@
 *                                                                                                  *
 * Copyright (C) 1993, 94 by the Trustees of the Johns Hopkins University                           *
 * CircleMUD is based on DikuMUD, Copyright (C) 1990, 1991.                                         *
-* Last updated: 12 April 2014 -- anth*3                                                          *
+* Last updated: 16 April 2014 -- anth*3                                                            *
 ***************************************************************************************************/
 
 #ifndef __ACT_H__
@@ -57,6 +59,11 @@ void space_to_minus(char *str);
 int search_help(const char *argument, int level);
 void free_history(struct char_data *ch, int type);
 void free_recent_players(void);
+#ifndef __SPEC_PROCS_H__
+SPECIAL(impl_room);
+SPECIAL(morgue_room);
+SPECIAL(newbie_room);
+#endif
 /* functions with subcommands */
 /* do_commands */
 ACMD(do_commands);

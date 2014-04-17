@@ -1,12 +1,13 @@
 /***************************************************************************************************
-* File: act.comm.c                                                  Part of the Realms of Tremaria *
+*                                                                   Part of the Realms of Tremaria *
+* File: act.comm.c                                                              A CircleMUD/tbaMUD *
 * Description: Player-level communication commands.                                                *
 *                                                                                                  *
 * All rights reserved.  See license for complete information.                                      *
 *                                                                                                  *
 * Copyright (C) 1993, 94 by the Trustees of the Johns Hopkins University                           *
 * CircleMUD is based on DikuMUD, Copyright (C) 1990, 1991.                                         *
-* Last updated: 11 April 2014 -- anth*3                                                          *
+* Last updated: 16 April 2014 -- anth*3                                                            *
 ***************************************************************************************************/
 
 #include "conf.h"
@@ -89,7 +90,8 @@ ACMD(do_gsay) {
 			parse_at(argument);
 		}
 
-		send_to_group(ch, ch->group, "%s%s%s says, '%s'%s\r\n", CCGRN(ch, C_NRM), CCGRN(ch, C_NRM), GET_NAME(ch), argument, CCNRM(ch, C_NRM));
+		send_to_group(ch, ch->group, "%s%s%s says, '%s'%s\r\n", CCGRN(ch, C_NRM), CCGRN(ch, C_NRM),
+				GET_NAME(ch), argument, CCNRM(ch, C_NRM));
 
 		if (!IS_NPC(ch) && PRF_FLAGGED(ch, PRF_NOREPEAT)) {
 			send_to_char(ch, "%s", CONFIG_OK);
@@ -134,7 +136,8 @@ static int is_tell_ok(struct char_data *ch, struct char_data *vict) {
 		act("$E is linkless at the moment.", FALSE, ch, 0, vict, TO_CHAR | TO_SLEEP);
 	} else if (PLR_FLAGGED(vict, PLR_WRITING)) {
 		act("$E is writing a message right now; try again later.", FALSE, ch, 0, vict, TO_CHAR | TO_SLEEP);
-	} else if ((!IS_NPC(vict) && PRF_FLAGGED(vict, PRF_NOTELL)) || (ROOM_FLAGGED(IN_ROOM(vict), ROOM_SOUNDPROOF) && (GET_LEVEL(ch) < LVL_GOD))) {
+	} else if ((!IS_NPC(vict) && PRF_FLAGGED(vict, PRF_NOTELL)) || (ROOM_FLAGGED(IN_ROOM(vict), ROOM_SOUNDPROOF) &&
+			(GET_LEVEL(ch) < LVL_GOD))) {
 		act("$E cannot hear you.", FALSE, ch, 0, vict, TO_CHAR | TO_SLEEP);
 	} else {
 		return (TRUE);
@@ -448,25 +451,25 @@ ACMD(do_gen_comm) {
 		{
 			"You cannot gossip!!\r\n",
 			"gossip",
-			"You aren't even on the channel!\r\n",
+			"You are not even on the gossiping channel!\r\n",
 			KYEL
 		},
 		{
 			"You cannot auction!!\r\n",
 			"auction",
-			"You aren't even on the channel!\r\n",
+			"You are not even on the auction channel!\r\n",
 			KMAG
 		},
 		{
 			"You cannot congratulate!\r\n",
 			"congrat",
-			"You aren't even on the channel!\r\n",
+			"You are not even on the congratulatory channel!\r\n",
 			KGRN
 		},
 		{
 			"You cannot gossip your emotions!\r\n",
 			"gossip",
-			"You aren't even on the channel!\r\n",
+			"You are not even on the emotes channel!\r\n",
 			KYEL
 		}
 	};
@@ -489,7 +492,8 @@ ACMD(do_gen_comm) {
 	}
 	/* Level_can_shout defined in config.c. */
 	if (GET_LEVEL(ch) < CONFIG_LEVEL_CAN_SHOUT) {
-		send_to_char(ch, "You must be at least level %d before you can %s.\r\n", CONFIG_LEVEL_CAN_SHOUT, com_msgs[subcmd][1]);
+		send_to_char(ch, "You must be at least level %d before you can %s.\r\n", CONFIG_LEVEL_CAN_SHOUT,
+			com_msgs[subcmd][1]);
 		return;
 	}
 	/* Make sure the char is on the channel. */
@@ -503,7 +507,8 @@ ACMD(do_gen_comm) {
 
 	/* Make sure that there is something there to say! */
 	if (!*argument) {
-		send_to_char(ch, "Yes, %s, fine, %s we must, but WHAT???\r\n", com_msgs[subcmd][1], com_msgs[subcmd][1]);
+		send_to_char(ch, "Yes, %s, fine, %s we must, but WHAT???\r\n", com_msgs[subcmd][1],
+			com_msgs[subcmd][1]);
 		return;
 	}
 	if (subcmd == SCMD_HOLLER) {
@@ -567,7 +572,8 @@ ACMD(do_qcomm) {
 	skip_spaces(&argument);
 
 	if (!*argument) {
-		send_to_char(ch, "%c%s?  Yes, fine, %s we must, but WHAT??\r\n", UPPER(*CMD_NAME), CMD_NAME + 1, CMD_NAME);
+		send_to_char(ch, "%c%s?  Yes, fine, %s we must, but WHAT??\r\n", UPPER(*CMD_NAME), CMD_NAME + 1,
+				CMD_NAME);
 	} else {
 		char buf[MAX_STRING_LENGTH];
 		struct descriptor_data *i;
