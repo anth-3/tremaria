@@ -11,11 +11,7 @@
 *                                                                                                  *
 * Copyright (C) 1993, 94 by the Trustees of the Johns Hopkins University                           *
 * CircleMUD is based on DikuMUD, Copyright (C) 1990, 1991.                                         *
-<<<<<<< HEAD
 * Last updated: 16 April 2014 -- anth*3                                                            *
-=======
-* Last updated: 12 April 2014 -- anth*3                                                            *
->>>>>>> 6e935a44b17fdc12df2002178d34ed6a13fad3ab
 ***************************************************************************************************/
 
 #ifndef __ACT_H__
