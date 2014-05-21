@@ -7,7 +7,7 @@
 *                                                                                                  *
 * Copyright (C) 1993, 94 by the Trustees of the Johns Hopkins University                           *
 * CircleMUD is based on DikuMUD, Copyright (C) 1990, 1991.                                         *
-* Last updated: 15 May 2014 -- anth*3                                                              *
+* Last updated: 20 May 2014 -- anth*3                                                              *
 ***************************************************************************************************/
 
 #include "conf.h"
@@ -47,7 +47,7 @@ static void perform_put(struct char_data *ch, struct obj_data *obj, struct obj_d
 /* do_remove utility functions */
 static void perform_remove(struct char_data *ch, int pos);
 /* do_wear utility functions */
-static void perform_wear(struct char_data *ch, struct obj_data *obj, int where);
+void perform_wear(struct char_data *ch, struct obj_data *obj, int where);
 static void wear_message(struct char_data *ch, struct obj_data *obj, int where);
 
 static void perform_put(struct char_data *ch, struct obj_data *obj, struct obj_data *cont) {
@@ -1242,7 +1242,7 @@ static void wear_message(struct char_data *ch, struct obj_data *obj, int where) 
 	act(wear_messages[where][1], FALSE, ch, obj, 0, TO_CHAR);
 }
 
-static void perform_wear(struct char_data *ch, struct obj_data *obj, int where) {
+void perform_wear(struct char_data *ch, struct obj_data *obj, int where) {
 	/*
 	 * ITEM_WEAR_TAKE is used for objects that do not require special bits
 	 * to be put into that position (e.g. you can hold any object, not just

@@ -7,7 +7,7 @@
 *                                                                                                  *
 * Copyright (C) 1993, 94 by the Trustees of the Johns Hopkins University                           *
 * CircleMUD is based on DikuMUD, Copyright (C) 1990, 1991.                                         *
-* Last updated: 16 May 2014 -- anth*3                                                              *
+* Last updated: 20 May 2014 -- anth*3                                                              *
 ***************************************************************************************************/
 
 #include "conf.h"
@@ -27,7 +27,6 @@
 #include "fight.h"
 #include "oasis.h" /* for buildwalk */
 
-
 /* local only functions */
 /* do_simple_move utility functions */
 static int has_boat(struct char_data *ch);
@@ -37,6 +36,8 @@ static int has_key(struct char_data *ch, obj_vnum key);
 static void do_doorcmd(struct char_data *ch, struct obj_data *obj, int door, int scmd);
 static int ok_pick(struct char_data *ch, obj_vnum keynum, int pickproof, int scmd);
 
+void dismount_char(struct char_data * ch);
+void mount_char(struct char_data *ch, struct char_data *mount);
 
 /* simple function to determine if char can walk on water */
 static int has_boat(struct char_data *ch) {
@@ -1090,10 +1091,10 @@ ACMD(do_mount) {
 	struct char_data *vict;
 
 	one_argument(argument, arg);
-	if (!arg || !*arg) {
+	if (!*arg) {
 		send_to_char(ch, "Mount who?\r\n");
 		return;
-	} else if (!(vict = get_char_room_vis(ch, arg))) {
+	} else if (!(vict = get_char_room_vis(ch, arg, NULL))) {
 		send_to_char(ch, "There is no one by that name here.\r\n");
 		return;
 	} else if (!IS_NPC(vict) && GET_LEVEL(ch) < LVL_IMMORT) {
@@ -1179,10 +1180,10 @@ ACMD(do_tame) {
 	struct char_data *vict;
 
 	one_argument(argument, arg);
-	if (!arg || !*arg) {
+	if (!*arg) {
 		send_to_char(ch, "Tame who?\r\n");
 		return;
-	} else if (!(vict = get_char_room_vis(ch, arg))) {
+	} else if (!(vict = get_char_room_vis(ch, arg, NULL))) {
 		send_to_char(ch, "They are not here.\r\n");
 		return;
 	} else if (GET_LEVEL(ch) < LVL_IMMORT && IS_NPC(vict) &&!MOB_FLAGGED(vict, MOB_MOUNTABLE)) {
@@ -1198,11 +1199,11 @@ ACMD(do_tame) {
 		send_to_char(ch, "It already looks pretty tame.\r\n");
 		return;
 	} else if (GET_SKILL(ch, SKILL_TAME) <= rand_number(1, 101)) {
-		send_to_char("You fail to tame it.\r\n", ch);
+		send_to_char(ch, "You fail to tame it.\r\n");
 		return;
 	}
 	vict->master = ch;
-	SET_BIT(AFF_FLAGS(ch), AFF_TAMED);
+	SET_BIT_AR(AFF_FLAGS(ch), AFF_TAMED);
 	act("You tame $N.", FALSE, ch, 0, vict, TO_CHAR);
 	act("$n tames you.", FALSE, ch, 0, vict, TO_VICT);
 	act("$n tames $N.", FALSE, ch, 0, vict, TO_NOTVICT);
