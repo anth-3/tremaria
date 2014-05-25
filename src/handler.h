@@ -7,7 +7,7 @@
 *                                                                                                  *
 * Copyright (C) 1993, 94 by the Trustees of the Johns Hopkins University                           *
 * CircleMUD is based on DikuMUD, Copyright (C) 1990, 1991.                                         *
-* Last updated: 20 May 2014 -- anth*3                                                              *
+* Last updated: 25 May 2014 -- anth*3                                                              *
 ***************************************************************************************************/
 
 #ifndef __HANDLER_H__
@@ -57,6 +57,8 @@ void char_to_room(struct char_data *ch, room_rnum room);
 void extract_char(struct char_data *ch);
 void extract_char_final(struct char_data *ch);
 void extract_pending_chars(void);
+void dismount_char(struct char_data *ch);
+void mount_char(struct char_data *ch, struct char_data *mount);
 
 /* find if character can see */
 struct char_data *get_player_vis(struct char_data *ch, char *name, int *number, int inroom);

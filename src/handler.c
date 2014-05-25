@@ -35,7 +35,7 @@ static int extractions_pending = 0;
 /* local file scope functions */
 static int apply_ac(struct char_data *ch, int eq_pos);
 static void update_object(struct obj_data *obj, int use);
-static void affect_modify_ar(struct char_data * ch, byte loc, sbyte mod, int bitv[], bool add);
+static void affect_modify_ar(struct char_data *ch, byte loc, sbyte mod, int bitv[], bool add);
 
 char *fname(const char *namelist) {
 	static char holder[READ_SIZE];
@@ -347,6 +347,7 @@ void affect_join(struct char_data *ch, struct affected_type *af, bool add_dur, b
 				af->duration += hjp->duration;
 			} else if (avg_dur) {
 				af->duration = (af->duration+hjp->duration)/2;
+			}
 			if (add_mod) {
 				af->modifier += hjp->modifier;
 			} else if (avg_mod) {
@@ -391,7 +392,7 @@ void char_from_room(struct char_data *ch) {
 /* place a character in a room */
 void char_to_room(struct char_data *ch, room_rnum room) {
 	if (ch == NULL || room == NOWHERE || room > top_of_world) {
-		log("SYSERR: Illegal value(s) passed to char_to_room. (Room: %d/%d Ch: %p", room,
+		log("SYSERR: Illegal value(s) passed to char_to_room. (Room: %llu/%llu Ch: %p", room,
 				top_of_world, ch);
 	} else {
 		ch->next_in_room = world[room].people;
@@ -676,7 +677,7 @@ struct char_data *get_char_num(mob_rnum nr) {
 /* put an object in a room */
 void obj_to_room(struct obj_data *object, room_rnum room) {
 	if (!object || room == NOWHERE || room > top_of_world) {
-		log("SYSERR: Illegal value(s) passed to obj_to_room. (Room #%d/%d, obj %p)", room,
+		log("SYSERR: Illegal value(s) passed to obj_to_room. (Room #%llu/%llu, obj %p)", room,
 				top_of_world, object);
 	} else {
 		object->next_content = world[room].contents;
@@ -695,7 +696,7 @@ void obj_from_room(struct obj_data *object) {
 	struct char_data *t, *tempch;
 
 	if (!object || IN_ROOM(object) == NOWHERE) {
-		log("SYSERR: NULL object (%p) or obj not in a room (%d) passed to obj_from_room", object,
+		log("SYSERR: NULL object (%p) or obj not in a room (%llu) passed to obj_from_room", object,
 				IN_ROOM(object));
 		return;
 	}
@@ -845,15 +846,17 @@ void extract_obj(struct obj_data *obj) {
 	free_obj(obj);
 }
 
-static void update_object(struct obj_data *obj, int use)
-{
-  /* dont update objects with a timer trigger */
-  if (!SCRIPT_CHECK(obj, OTRIG_TIMER) && (GET_OBJ_TIMER(obj) > 0))
-    GET_OBJ_TIMER(obj) -= use;
-  if (obj->contains)
-    update_object(obj->contains, use);
-  if (obj->next_content)
-    update_object(obj->next_content, use);
+static void update_object(struct obj_data *obj, int use) {
+	/* dont update objects with a timer trigger */
+	if (!SCRIPT_CHECK(obj, OTRIG_TIMER) && (GET_OBJ_TIMER(obj) > 0)) {
+		GET_OBJ_TIMER(obj) -= use;
+	}
+	if (obj->contains) {
+		update_object(obj->contains, use);
+	}
+	if (obj->next_content) {
+		update_object(obj->next_content, use);
+	}
 }
 
 void update_char_objects(struct char_data *ch) {
@@ -959,7 +962,7 @@ void extract_char_final(struct char_data *ch) {
 	while (ch->carrying) {
 		obj = ch->carrying;
 		obj_from_char(obj);
-		if (OB_FLAGGED(obj, ITEM_NEWBIE)) {
+		if (OBJ_FLAGGED(obj, ITEM_NEWBIE)) {
 			extract_obj(obj);
 		} else {
 			obj_to_room(obj, IN_ROOM(ch));
