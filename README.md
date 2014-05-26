@@ -1,6 +1,6 @@
 # tremaria
 
-`
+```
                                /|                 |\  - Psyra Silverscale -   
                               / | ___.--~~~--.___ | \        
          ...--=.._           /  ~~___~\_   _/~___~~  \        _..=--...   
@@ -26,7 +26,7 @@
                       | | '__/ _ \ '_ ` _ \ / _` | '__| |/ _` |       
                       | | | |  __/ | | | | | (_| | |  | | (_| |
                       |_|_|  \___|_| |_| |_|\__,_|_|  |_|\__,_|
-`
+```
                             Based on CircleMUD 3.0,
                             Created by Jeremy Elson
                       A derivative of DikuMUD (GAMMA 0.0)
