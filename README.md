@@ -1,7 +1,6 @@
-tremaria
-========
+# tremaria
 
-
+`
                                /|                 |\  - Psyra Silverscale -   
                               / | ___.--~~~--.___ | \        
          ...--=.._           /  ~~___~\_   _/~___~~  \        _..=--...   
@@ -27,7 +26,7 @@ tremaria
                       | | '__/ _ \ '_ ` _ \ / _` | '__| |/ _` |       
                       | | | |  __/ | | | | | (_| | |  | | (_| |
                       |_|_|  \___|_| |_| |_|\__,_|_|  |_|\__,_|
-
+`
                             Based on CircleMUD 3.0,
                             Created by Jeremy Elson
                       A derivative of DikuMUD (GAMMA 0.0)
@@ -35,8 +34,7 @@ tremaria
                      Hans Henrik Staerfeldt, Katja Nyboe,
                Tom Madsen, Michael Seifert, and Sebastian Hammer
 
-credits
-=======
+## credits
 
 The Realms of Tremaria was originally based on CircleMUD 3.0 patch 11. It is 
 now being converted from this code base circa 1998 to the more modern tbaMUD
@@ -52,7 +50,7 @@ Its author can be contacted at (jelson@cs.jhu.edu)*.
 
 Type HELP CIRCLEMUD for more information.
 
-============================================================================
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
 
                    Original game idea, concept, and design:
@@ -63,14 +61,14 @@ Type HELP CIRCLEMUD for more information.
           Michael Seifert                 [Papi] (seifert@freja.diku.dk)*
           Sebastian Hammer               [Quinn] (quinn@freja.diku.dk)*
 
-------------------------------------------------------------------------------
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 Additional contributions from Michael Curran, Bill Wisner, Mads Haar, and
 Stephan Dahl.
 
 Originally developed at:
   DIKU - The Department of Computer Science at the University of Copenhagen.
 
-=============================================================================
+= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
 
                  Tremaria code:
           Trey Holdener               [Keane]   (holdener@slu.edu)*          
