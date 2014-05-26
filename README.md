@@ -48,10 +48,7 @@ Hopkins University.
 CircleMUD is available for anonymous FTP at ftp.circlemud.org in pub/CircleMUD.
 Its author can be contacted at (jelson@cs.jhu.edu)*.
 
-Type HELP CIRCLEMUD for more information.
-
-= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
-
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
                    Original game idea, concept, and design:
 
@@ -62,13 +59,14 @@ Type HELP CIRCLEMUD for more information.
           Sebastian Hammer               [Quinn] (quinn@freja.diku.dk)*
 
 - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+
 Additional contributions from Michael Curran, Bill Wisner, Mads Haar, and
 Stephan Dahl.
 
 Originally developed at:
   DIKU - The Department of Computer Science at the University of Copenhagen.
 
-= = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
 
                  Tremaria code:
           Trey Holdener               [Keane]   (holdener@slu.edu)*          
@@ -77,5 +75,5 @@ Originally developed at:
           Sarah Mueller               [Rusalka] (rusalka@cyber-safari.com)*
           Todd Schmidt		          [Toad]    (toad@accessus.net)* 
 
-* I would seriously doubt if a single one of these email addresses works in the
+\* I would seriously doubt if a single one of these email addresses works in the
 here and now. I left them here as a point of nostalgia.
